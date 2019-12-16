@@ -1,0 +1,47 @@
+{
+  "name": "@iwharris/dicom-data-dictionary",
+  "version": "0.0.1",
+  "description": "Dictionary of DICOM data elements, built directly from the published standard at dicom.nema.org",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ts-node build/index.ts",
+    "compile": "tsc -p .",
+    "fetch": "wget -N -P './tmp' 'http://dicom.nema.org/medical/dicom/current/source/docbook/part06/part06.xml'",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iwharris/dicom-data-dictionary.git"
+  },
+  "keywords": [
+    "dicom",
+    "dictionary"
+  ],
+  "author": "Ian Harris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iwharris/dicom-data-dictionary/issues"
+  },
+  "homepage": "https://github.com/iwharris/dicom-data-dictionary#readme",
+  "eslint": {
+    "extends": "@iwharris/eslint-config"
+  },
+  "devDependencies": {
+    "@iwharris/eslint-config": "0.0.2",
+    "@iwharris/prettier-config": "0.0.3",
+    "@types/jsonpath": "^0.2.0",
+    "@types/node": "^12.12.14",
+    "@types/request-promise-native": "^1.0.17",
+    "@types/xml2js": "^0.4.5",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "handlebars": "^4.5.3",
+    "jsonpath": "^1.0.2",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3",
+    "xml2js": "^0.4.22"
+  },
+  "dependencies": {}
+}
