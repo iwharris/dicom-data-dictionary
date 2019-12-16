@@ -28,6 +28,12 @@ console.log(dictionary.elements('(0020,0011')));
 
 console.log(dictionary.get_element('SeriesNumber'));
 // Same as above
+
+console.log(dictionary.get_element('00200011'));
+// Same as above
+
+console.log(dictionary.get_element('0020,0011'));
+// Same as above
 ```
 
 ## Development
