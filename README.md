@@ -50,6 +50,8 @@ npm run fetch
 # Build src/index.ts from the specification
 npm run build
 
+# Commit src/index.ts to source control if changed
+
 # Compile Typescript (useful for publishing to npm)
 npm run compile
 ```
