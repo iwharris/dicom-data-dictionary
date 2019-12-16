@@ -42,7 +42,7 @@ export const elements: ElementsMap = {
  */
 export const get_element = (key: string): DicomDataElement | undefined => {
     const fullTagRegex = /^\([0-9ABCDEFx]{4},[0-9ABCDEFx]{4}\)$/;
-    const shortTagRegex = /([0-9ABCDEFx]{4})[,]?[0-9ABCDEFx]{4}/;
+    const shortTagRegex = /([0-9ABCDEFx]{4})[,]?([0-9ABCDEFx]{4})/;
     if (fullTagRegex.test(key)) return elements[key];
     else {
         const [_ignore, g, e] = shortTagRegex.exec(key) || [];
