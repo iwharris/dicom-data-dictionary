@@ -7,6 +7,7 @@
     "build": "ts-node build/index.ts",
     "compile": "tsc -p .",
     "fetch": "wget -N -P './tmp' 'http://dicom.nema.org/medical/dicom/current/source/docbook/part06/part06.xml'",
+    "prettier": "prettier --check {src,build}/**/*.[jt]s",
     "test": "exit 0"
   },
   "repository": {
@@ -23,11 +24,11 @@
     "url": "https://github.com/iwharris/dicom-data-dictionary/issues"
   },
   "homepage": "https://github.com/iwharris/dicom-data-dictionary#readme",
-  "eslint": {
+  "eslintConfig": {
     "extends": "@iwharris/eslint-config"
   },
   "devDependencies": {
-    "@iwharris/eslint-config": "0.0.2",
+    "@iwharris/eslint-config": "0.0.3",
     "@iwharris/prettier-config": "0.0.3",
     "@types/jsonpath": "^0.2.0",
     "@types/node": "^12.12.14",
