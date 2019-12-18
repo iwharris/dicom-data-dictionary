@@ -47360,16 +47360,16 @@ export const elements: ElementsMap = {
 
 /**
  * Get a DICOM Data Element either by tag or keyword.
- * 
+ *
  * Tags in the following forms are accepted:
- * 
+ *
  * (gggg,eeee)
  * gggg,eeee
  * (ggggeeee)
  * ggggeeee
- * 
+ *
  * @param key {string}
- * 
+ *
  * @returns the DICOM Data Element if it exists; undefined otherwise
  */
 export const get_element = (key: string): DicomDataElement | undefined => {
@@ -47377,7 +47377,7 @@ export const get_element = (key: string): DicomDataElement | undefined => {
     const shortTagRegex = /([0-9ABCDEFx]{4})[,]?([0-9ABCDEFx]{4})/;
     if (fullTagRegex.test(key)) return elements[key];
     else {
-        const [_ignore, g, e] = shortTagRegex.exec(key) || [];
+        const [, g, e] = shortTagRegex.exec(key) || [];
 
         if (g && e) return elements[`(${g},${e})`];
         else {
@@ -47387,7 +47387,7 @@ export const get_element = (key: string): DicomDataElement | undefined => {
             else return undefined;
         }
     }
-}
+};
 
 /**
  * "A Data Element Tag is represented as "(gggg,eeee)", where gggg equates to the Group Number and
