@@ -8,7 +8,8 @@
         "compile": "tsc -p .",
         "fetch": "wget -N -P './tmp' 'http://dicom.nema.org/medical/dicom/current/source/docbook/part06/part06.xml'",
         "prettier": "prettier --check {src,build}/**/*.[jt]s",
-        "test": "jest --coverage"
+        "test": "jest",
+        "test:coverage": "jest --coverage"
     },
     "repository": {
         "type": "git",
