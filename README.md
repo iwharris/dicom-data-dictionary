@@ -1,4 +1,5 @@
 # dicom-data-dictionary
+
 dictionary of DICOM data elements, built directly from the published standard at dicom.nema.org
 
 ## Installation
@@ -55,6 +56,9 @@ npm run fetch
 
 # Build src/index.ts from the specification
 npm run build
+
+# Test validity of the exported file
+npm run test
 
 # Commit src/index.ts to source control if changed
 
