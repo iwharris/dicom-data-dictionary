@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Compile typescript
-          command: npm run build
+          command: npm run compile
 
       - run:
           name: Lint code
