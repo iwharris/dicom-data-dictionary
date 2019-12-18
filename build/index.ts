@@ -87,7 +87,12 @@ const buildTemplateData = (rows: (string | undefined)[][]): TemplateData => {
 
             // Generate element mapping
             elements.push({
-                tag, name, keyword, vr, vm, note,
+                tag,
+                name,
+                keyword,
+                vr,
+                vm,
+                note,
                 isRetired: note ? /RET/.test(note) : false,
             });
         } catch (error) {
@@ -108,7 +113,11 @@ const buildTemplateData = (rows: (string | undefined)[][]): TemplateData => {
     };
 };
 
-const generateSourceFromTemplate = async (templatePath: PathLike, outPath: PathLike, data: TemplateData): Promise<void> => {
+const generateSourceFromTemplate = async (
+    templatePath: PathLike,
+    outPath: PathLike,
+    data: TemplateData
+): Promise<void> => {
     const rawTemplate = await readFilePromise(templatePath, { encoding: defaultEncoding });
 
     const template = Handlebars.compile(rawTemplate);
