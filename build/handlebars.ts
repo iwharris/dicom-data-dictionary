@@ -1,5 +1,8 @@
 import Handlebars from 'handlebars';
 
+/**
+ * The 'readme' helper injects a block of text at the top of the generated .ts module.
+ */
 Handlebars.registerHelper(
     'readme',
     () => `// DO NOT MODIFY THIS FILE.
