@@ -108,12 +108,12 @@ const buildTemplateData = (rows: (string | undefined)[][], ignoreErrors: boolean
     const keywords = new Map<string, string>();
     const elements: { [key: string]: any }[] = [];
 
-    rows.forEach(([tag, name, keyword, vr, vm, note]) => {
+    rows.forEach(([tag, name, keyword, vr, vm, note], rowNumber) => {
         try {
             if (!tag || !/^\([0-9ABCDEFFx]{4},[0-9ABCDEFx]{4}\)$/.test(tag))
                 throw new Error(`Tag ${tag} is invalid`);
             if (!keyword) {
-                console.warn(`Keyword ${keyword} is falsy, skipping...`);
+                console.debug(`Keyword ${keyword} is falsy, skipping...`);
                 return;
             }
 
