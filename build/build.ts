@@ -59,13 +59,35 @@ const parseRowsFromJson = (parsedXml: ParsedXml, ignoreErrors: boolean): any[] =
     return rows
         .map((row, rowNumber) => {
             try {
-                const r = row.td.map((td) => (td.para ? query(td.para, '$.._')[0] : undefined));
+                const columns = row.td as any[];
+                const values: (string | undefined)[] = columns.map((td) => {
+                    if (td.para) {
+                        // Old-style structure without 'emphasis' wrapper
+                        if (typeof td.para[0] === 'string') return td.para[0];
+                        // With 'emphasis' wrapper
+                        else return query(td.para, '$.._')[0] || undefined;
+                    }
 
-                if (r.length !== 6) {
-                    throw new Error(`Expected 6 values in row but got ${r.length} values: ${r}`);
+                    return undefined;
+                });
+
+                if (!values[0]) {
+                    throw new Error(
+                        `Expected a value to be parsed for the elements but got ${values[0]}`
+                    );
                 }
 
-                return r;
+                if (values.length === 5) {
+                    // Older revisions of the XML document omit the 'note' column entirely when no note is present
+                    values.push(undefined);
+                    return values;
+                } else if (values.length === 6) {
+                    return values;
+                } else {
+                    throw new Error(
+                        `Expected 5-6 values in row but got ${values.length}. Values are ${values}`
+                    );
+                }
             } catch (error) {
                 console.warn(`Could not parse row ${rowNumber} due to an error:`);
                 console.warn(error);
