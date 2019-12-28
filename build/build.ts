@@ -89,12 +89,12 @@ const parseRowsFromJson = (parsedXml: ParsedXml, ignoreErrors: boolean): any[] =
                     );
                 }
             } catch (error) {
-                console.warn(`Could not parse row ${rowNumber} due to an error:`);
-                console.warn(error);
+                console.warn(`Could not parse row ${rowNumber} due to an error: ${error.message}`);
                 console.warn('Raw JSON dump of the row is as follows:');
                 console.warn(JSON.stringify(row.td, null, 2));
 
                 if (ignoreErrors) {
+                    console.warn(error);
                     return null;
                 } else {
                     throw error;
@@ -134,6 +134,10 @@ const buildTemplateData = (rows: (string | undefined)[][], ignoreErrors: boolean
                 isRetired: note ? /RET/.test(note) : false,
             });
         } catch (error) {
+            console.warn(`Could not parse row ${rowNumber} due to an error: ${error.message}`);
+            console.warn('Raw JSON dump of the row is as follows:');
+            console.warn(JSON.stringify(rows[rowNumber], null, 2));
+
             if (ignoreErrors) {
                 console.warn(error);
             } else {
