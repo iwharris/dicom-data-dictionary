@@ -4,29 +4,45 @@ import { query } from 'jsonpath';
 import { parseStringPromise } from 'xml2js';
 import { readFile, writeFile, PathLike } from 'fs';
 import { promisify } from 'util';
+import commander from 'commander';
 import { Handlebars } from './handlebars';
 
 const readFilePromise = promisify(readFile);
 const writeFilePromise = promisify(writeFile);
 
-// TODO parameterize
-const defaultEncoding = 'utf-8';
+const DEFAULT_ENCODING = 'utf-8';
+const DEFAULT_XML_PATH = './downloaded/current.xml';
+const DEFAULT_TEMPLATE_PATH = './build/template/index.ts.template';
+const DEFAULT_OUT_PATH = './src/index.ts';
+const DEFAULT_ABORT_ON_ERROR = false;
 
-// TODO receive this as an arg
-const XML_PATH = './tmp/part06.xml';
+const getCommand = (): commander.Command => {
+    return commander
+        .description('Data dictionary builder for DICOM PS3.6 Part 06 spcifications')
+        .arguments('<xml_path>')
+        .option('--encoding <encoding>', 'Text encoding for parsing the XML file', DEFAULT_ENCODING)
+        .option(
+            '-f, --ignore-errors',
+            'Continue if errors are thrown in XML parsing',
+            DEFAULT_ABORT_ON_ERROR
+        )
+        .option(
+            '-o, --out-path <outPath>',
+            'Output path of the generated .ts module',
+            DEFAULT_OUT_PATH
+        )
+        .option(
+            '-t, --template-path <templatePath>',
+            'Path to the Handlebars template used to generate the .ts module',
+            DEFAULT_TEMPLATE_PATH
+        );
+};
 
-// TODO parameterize these
-const templatePath = './build/template/index.ts.template';
-const outPath = './src/index.ts';
-
-// TODO parameterize
-const abortOnError = false;
-
-const loadXmlAsJson = async (path: PathLike, encoding: string): Promise<any> => {
+const loadXmlAsJson = async (path: PathLike, encoding: string): Promise<ParsedXml> => {
     return readFilePromise(path, { encoding }).then((rawFile) => parseStringPromise(rawFile));
 };
 
-const parseRowsFromJson = (parsedXml): any[] => {
+const parseRowsFromJson = (parsedXml: ParsedXml, ignoreErrors: boolean): any[] => {
     console.debug(`Parsed title: ${parsedXml.book.subtitle}`);
 
     // Data dictionary is in chapter 6
@@ -56,17 +72,17 @@ const parseRowsFromJson = (parsedXml): any[] => {
                 console.warn('Raw JSON dump of the row is as follows:');
                 console.warn(JSON.stringify(row.td, null, 2));
 
-                if (abortOnError) {
-                    throw error;
-                } else {
+                if (ignoreErrors) {
                     return null;
+                } else {
+                    throw error;
                 }
             }
         })
         .filter(Boolean);
 };
 
-const buildTemplateData = (rows: (string | undefined)[][]): TemplateData => {
+const buildTemplateData = (rows: (string | undefined)[][], ignoreErrors: boolean): TemplateData => {
     const keywords = new Map<string, string>();
     const elements: { [key: string]: any }[] = [];
 
@@ -96,8 +112,9 @@ const buildTemplateData = (rows: (string | undefined)[][]): TemplateData => {
                 isRetired: note ? /RET/.test(note) : false,
             });
         } catch (error) {
-            console.warn(error);
-            if (abortOnError) {
+            if (ignoreErrors) {
+                console.warn(error);
+            } else {
                 throw error;
             }
         }
@@ -118,20 +135,23 @@ const generateSourceFromTemplate = async (
     outPath: PathLike,
     data: TemplateData
 ): Promise<void> => {
-    const rawTemplate = await readFilePromise(templatePath, { encoding: defaultEncoding });
+    const rawTemplate = await readFilePromise(templatePath, { encoding: DEFAULT_ENCODING });
 
     const template = Handlebars.compile(rawTemplate);
 
     const outSource = template(data);
 
-    await writeFilePromise(outPath, outSource, { encoding: defaultEncoding });
+    await writeFilePromise(outPath, outSource, { encoding: DEFAULT_ENCODING });
 };
 
-const main = async (): Promise<void> => {
-    console.log(`Loading XML from ${XML_PATH}...`);
-    const parsedXml = await loadXmlAsJson(XML_PATH, defaultEncoding);
-    const rows = parseRowsFromJson(parsedXml);
-    const templateData = buildTemplateData(rows);
+const main = async (command: commander.Command): Promise<void> => {
+    const [xmlPath] = command.args || [DEFAULT_XML_PATH];
+    const { defaultEncoding, outPath, templatePath, ignoreErrors } = command;
+
+    console.log(`Loading XML from ${xmlPath}...`);
+    const parsedXml = await loadXmlAsJson(xmlPath, defaultEncoding);
+    const rows = parseRowsFromJson(parsedXml, ignoreErrors);
+    const templateData = buildTemplateData(rows, ignoreErrors);
 
     console.log(`Generating source at ${outPath}...`);
     await generateSourceFromTemplate(templatePath, outPath, templateData);
@@ -143,7 +163,10 @@ const handleError = (error: Error): void => {
     process.exit(1);
 };
 
-main().catch(handleError);
+// Entry point
+getCommand()
+    .action((xmlPath: string, command: commander.Command) => main(command).catch(handleError))
+    .parse(process.argv);
 
 interface TemplateData {
     /**
@@ -152,3 +175,8 @@ interface TemplateData {
     tags: [string, string][];
     elements: { [key: string]: any }[];
 }
+
+/**
+ * Type alias for the output from xml2js.
+ */
+type ParsedXml = any;
