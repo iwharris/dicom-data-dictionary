@@ -61,5 +61,5 @@ typings/
 .next
 
 # temp directory
-tmp
+downloaded
 dist
