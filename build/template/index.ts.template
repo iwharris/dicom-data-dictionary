@@ -1,4 +1,4 @@
-{{ readme }}
+{{{ readme }}}
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
