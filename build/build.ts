@@ -190,9 +190,8 @@ const handleError = (error: Error): void => {
 };
 
 // Entry point
-getCommand()
-    .action((xmlPath: string, command: commander.Command) => main(command).catch(handleError))
-    .parse(process.argv);
+const command = getCommand().parse(process.argv);
+main(command).catch(handleError);
 
 interface TemplateData {
     /**
