@@ -6,7 +6,7 @@
     "scripts": {
         "build": "ts-node build/index.ts",
         "compile": "tsc -p .",
-        "fetch": "wget -N -P './tmp' 'http://dicom.nema.org/medical/dicom/current/source/docbook/part06/part06.xml'",
+        "fetch": "scripts/fetch.sh",
         "prettier": "prettier --check {src,build}/**/*.[jt]s",
         "test": "jest",
         "test:coverage": "jest --coverage"
