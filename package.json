@@ -4,7 +4,7 @@
     "description": "Dictionary of DICOM data elements, built directly from the published standard at dicom.nema.org",
     "main": "dist/index.js",
     "scripts": {
-        "build": "ts-node build/index.ts",
+        "build": "ts-node build/build.ts",
         "compile": "tsc -p .",
         "fetch": "scripts/fetch.sh",
         "prettier": "prettier --check {src,build}/**/*.[jt]s",
