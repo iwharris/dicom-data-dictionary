@@ -11,7 +11,7 @@ const readFilePromise = promisify(readFile);
 const writeFilePromise = promisify(writeFile);
 
 const DEFAULT_ENCODING = 'utf-8';
-const DEFAULT_XML_PATH = './downloaded/current.xml';
+const DEFAULT_XML_PATH = './downloaded/current/part06.xml';
 const DEFAULT_TEMPLATE_PATH = './build/template/index.ts.template';
 const DEFAULT_OUT_PATH = './src/index.ts';
 const DEFAULT_ABORT_ON_ERROR = false;
