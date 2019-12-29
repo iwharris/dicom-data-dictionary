@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2019a';
+export const revision: string = '2019b';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -1204,6 +1204,7 @@ export const tags: KeywordsMap = {
     EmptyImageBoxCIELabValue: '(0072,0421)',
     EmptyImageDensity: '(2010,0110)',
     EncapsulatedDocument: '(0042,0011)',
+    EncapsulatedDocumentLength: '(0042,0015)',
     EncryptedAttributesSequence: '(0400,0500)',
     EncryptedContent: '(0400,0520)',
     EncryptedContentTransferSyntaxUID: '(0400,0510)',
@@ -2264,6 +2265,8 @@ export const tags: KeywordsMap = {
     NominalRespiratoryTriggerDelayTime: '(0020,9255)',
     NominalScannedPixelSpacing: '(0018,2010)',
     NominalScreenDefinitionSequence: '(0072,0102)',
+    NonconformingDataElementValue: '(0400,0552)',
+    NonconformingModifiedAttributesSequence: '(0400,0551)',
     NonDICOMOutputCodeSequence: '(0040,4032)',
     NonidentifyingPrivateElements: '(0008,0304)',
     NonUniformRadialSamplingCorrected: '(0018,9766)',
@@ -26448,8 +26451,8 @@ export const elements: ElementsMap = {
         keyword: `ReferencedFrameNumbers`,
         vr: `US`,
         vm: `1-n`,
-        note: ``,
-        isRetired: false,
+        note: `RET (2019)`,
+        isRetired: true,
     },
     '(0040,A138)': {
         tag: `(0040,A138)`,
@@ -27232,6 +27235,15 @@ export const elements: ElementsMap = {
         keyword: `ListOfMIMETypes`,
         vr: `LO`,
         vm: `1-n`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0042,0015)': {
+        tag: `(0042,0015)`,
+        name: `Encapsulated Document Length`,
+        keyword: `EncapsulatedDocumentLength`,
+        vr: `UL`,
+        vm: `1`,
         note: ``,
         isRetired: false,
     },
@@ -35664,6 +35676,24 @@ export const elements: ElementsMap = {
         name: `Modified Attributes Sequence`,
         keyword: `ModifiedAttributesSequence`,
         vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0400,0551)': {
+        tag: `(0400,0551)`,
+        name: `Nonconforming Modified Attributes Sequence`,
+        keyword: `NonconformingModifiedAttributesSequence`,
+        vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0400,0552)': {
+        tag: `(0400,0552)`,
+        name: `Nonconforming Data Element Value`,
+        keyword: `NonconformingDataElementValue`,
+        vr: `OB`,
         vm: `1`,
         note: ``,
         isRetired: false,
