@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2014c';
+export const revision: string = '2015a';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -1050,6 +1050,7 @@ export const tags: KeywordsMap = {
     EquipmentAdministratorSequence: '(0028,7000)',
     EquipmentCoordinateSystemIdentification: '(0028,9537)',
     EquivalentCDADocumentSequence: '(0040,A090)',
+    EquivalentCodeSequence: '(0008,0121)',
     EquivalentPupilRadius: '(0046,0205)',
     EscapeTriplet: '(1000,xxx0)',
     EstimatedDoseSaving: '(0018,9324)',
@@ -1713,6 +1714,7 @@ export const tags: KeywordsMap = {
     LocalNamespaceEntityID: '(0040,0031)',
     Location: '(0020,0050)',
     LocationOfMeasuredBeamDiameter: '(0014,4019)',
+    LongCodeValue: '(0008,0119)',
     LongEdgePointIndexList: '(0066,0042)',
     LongitudinalTemporalInformationModified: '(0028,0303)',
     LongPrimitivePointIndexList: '(0066,0040)',
@@ -1756,6 +1758,7 @@ export const tags: KeywordsMap = {
     ManufacturerModelName: '(0008,1090)',
     MappedPixelValue: '(0022,1452)',
     MappingResource: '(0008,0105)',
+    MappingResourceUID: '(0008,0118)',
     MaskFrameNumbers: '(0028,6110)',
     MaskingImage: '(0020,0080)',
     MaskOperation: '(0028,6101)',
@@ -3678,6 +3681,7 @@ export const tags: KeywordsMap = {
     UnspecifiedLateralityLensSequence: '(0046,0016)',
     UpperLowerPixelValues: '(0018,1240)',
     UrgencyOrPriorityAlertsTrial: '(0040,A057)',
+    URNCodeValue: '(0008,0120)',
     UsedFiducialsSequence: '(0070,0314)',
     UsedSegmentsSequence: '(0062,0012)',
     UserSelectedGainY: '(0014,408B)',
@@ -4475,6 +4479,42 @@ export const elements: ElementsMap = {
         name: `Context UID`,
         keyword: `ContextUID`,
         vr: `UI`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0008,0118)': {
+        tag: `(0008,0118)`,
+        name: `Mapping Resource UID`,
+        keyword: `MappingResourceUID`,
+        vr: `UI`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0008,0119)': {
+        tag: `(0008,0119)`,
+        name: `Long Code Value`,
+        keyword: `LongCodeValue`,
+        vr: `UC`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0008,0120)': {
+        tag: `(0008,0120)`,
+        name: `URN Code Value`,
+        keyword: `URNCodeValue`,
+        vr: `UR`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0008,0121)': {
+        tag: `(0008,0121)`,
+        name: `Equivalent Code Sequence`,
+        keyword: `EquivalentCodeSequence`,
+        vr: `SQ`,
         vm: `1`,
         note: ``,
         isRetired: false,
