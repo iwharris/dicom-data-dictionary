@@ -1,6 +1,11 @@
 {{{ readme }}}
 
 /**
+ * The revision of the data dictionary spec, eg. "2014a".
+ */
+export const revision: string = '{{revision}}';
+
+/**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
  */
 export const tags: KeywordsMap = {
@@ -10,7 +15,7 @@ export const tags: KeywordsMap = {
 };
 
 /**
- * Maps DICOM element
+ * Maps DICOM tags to DICOM element objects.
  */
 export const elements: ElementsMap = {
     {{#each elements}}

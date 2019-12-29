@@ -6,6 +6,7 @@ import { readFile, writeFile, PathLike } from 'fs';
 import { promisify } from 'util';
 import commander from 'commander';
 import { Handlebars } from './handlebars';
+import { getRegexMatches } from './util';
 
 const readFilePromise = promisify(readFile);
 const writeFilePromise = promisify(writeFile);
@@ -43,7 +44,8 @@ const loadXmlAsJson = async (path: PathLike, encoding: string): Promise<ParsedXm
 };
 
 const parseRowsFromJson = (parsedXml: ParsedXml, ignoreErrors: boolean): any[] => {
-    console.debug(`Parsed title: ${parsedXml.book.subtitle}`);
+    const title = parsedXml.book.subtitle;
+    console.debug(`Parsed title: ${title}`);
 
     // Data dictionary is in chapter 6
     const dictionaryChapter = parsedXml.book.chapter.find(
@@ -104,7 +106,11 @@ const parseRowsFromJson = (parsedXml: ParsedXml, ignoreErrors: boolean): any[] =
         .filter(Boolean);
 };
 
-const buildTemplateData = (rows: (string | undefined)[][], ignoreErrors: boolean): TemplateData => {
+const buildTemplateData = (
+    rows: (string | undefined)[][],
+    revision: string,
+    ignoreErrors: boolean
+): TemplateData => {
     const keywords = new Map<string, string>();
     const elements: { [key: string]: any }[] = [];
 
@@ -152,6 +158,7 @@ const buildTemplateData = (rows: (string | undefined)[][], ignoreErrors: boolean
     );
 
     return {
+        revision,
         tags,
         elements,
     };
@@ -178,7 +185,15 @@ const main = async (command: commander.Command): Promise<void> => {
     console.log(`Loading XML from ${xmlPath}...`);
     const parsedXml = await loadXmlAsJson(xmlPath, defaultEncoding);
     const rows = parseRowsFromJson(parsedXml, ignoreErrors);
-    const templateData = buildTemplateData(rows, ignoreErrors);
+
+    // Extract dictionary revision from subtitle
+    const [revision] = getRegexMatches(/3\.6 (\w+) \-/, parsedXml.book.subtitle);
+    if (!revision)
+        throw new Error(`Could not detect revision string in "${parsedXml.book.subtitle}"`);
+
+    console.debug(`Revision is ${revision}`);
+
+    const templateData = buildTemplateData(rows, revision, ignoreErrors);
 
     console.log(`Generating source at ${outPath}...`);
     await generateSourceFromTemplate(templatePath, outPath, templateData);
@@ -196,9 +211,15 @@ main(command).catch(handleError);
 
 interface TemplateData {
     /**
+     * The revision of the data dictionary spec, eg. "2014a".
+     */
+    revision: string;
+
+    /**
      * Mapping of DICOM keyword to tag, eg. ["SpecificCharacterSet", "(0008,0005)"]
      */
     tags: [string, string][];
+
     elements: { [key: string]: any }[];
 }
 

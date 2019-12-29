@@ -1,6 +1,12 @@
 import * as exported from '../src';
 
 describe('index', () => {
+    describe('revision', () => {
+        it('should have a revision string', () => {
+            expect(exported.revision).toBeTruthy();
+        });
+    });
+
     describe('tags', () => {
         it('should export some tags', () => {
             expect(Object.keys(exported.tags).length).toBeGreaterThan(0);
