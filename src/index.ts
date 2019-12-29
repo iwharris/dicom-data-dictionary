@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2018c';
+export const revision: string = '2018d';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -3179,6 +3179,7 @@ export const tags: KeywordsMap = {
     RightLensSequence: '(0046,0014)',
     ROIArea: '(60xx,1301)',
     ROIContourSequence: '(3006,0039)',
+    ROIDerivationAlgorithmIdentificationSequence: '(3006,0037)',
     ROIDescription: '(3006,0028)',
     ROIDisplayColor: '(3006,002A)',
     ROIElementalCompositionAtomicMassFraction: '(3006,00B8)',
@@ -3361,6 +3362,7 @@ export const tags: KeywordsMap = {
     SegmentLabel: '(0062,0005)',
     SegmentNumber: '(0062,0004)',
     SegmentSequence: '(0062,0002)',
+    SegmentsOverlap: '(0062,0013)',
     SegmentSurfaceGenerationAlgorithmIdentificationSequence: '(0066,002D)',
     SegmentSurfaceSourceInstanceSequence: '(0066,002E)',
     SelectedSegmentalOphthalmicAxialLengthSequence: '(0022,1257)',
@@ -28101,6 +28103,15 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(0062,0013)': {
+        tag: `(0062,0013)`,
+        name: `Segments Overlap`,
+        keyword: `SegmentsOverlap`,
+        vr: `CS`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(0062,0020)': {
         tag: `(0062,0020)`,
         name: `Tracking ID`,
@@ -35648,6 +35659,15 @@ export const elements: ElementsMap = {
         name: `ROI Generation Algorithm`,
         keyword: `ROIGenerationAlgorithm`,
         vr: `CS`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(3006,0037)': {
+        tag: `(3006,0037)`,
+        name: `ROI Derivation Algorithm Identification Sequence`,
+        keyword: `ROIDerivationAlgorithmIdentificationSequence`,
+        vr: `SQ`,
         vm: `1`,
         note: ``,
         isRetired: false,
