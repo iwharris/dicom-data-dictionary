@@ -18,3 +18,6 @@ npm run -s build ${OUT_DIR}/${XML_NAME}
 # Run tests and lint
 npm run -s prettier
 npm test
+
+# Compile typescript
+npm run compile

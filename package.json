@@ -7,6 +7,7 @@
         "build": "ts-node build/build.ts",
         "compile": "tsc -p .",
         "fetch": "scripts/fetch.sh",
+        "full-build": "scripts/full-build.sh",
         "prettier": "prettier --check {src,build}/**/*.[jt]s",
         "test": "jest",
         "test:coverage": "jest --coverage"
