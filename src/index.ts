@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2016e';
+export const revision: string = '2017a';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -1380,6 +1380,10 @@ export const tags: KeywordsMap = {
     GeneralPurposeScheduledProcedureStepStatus: '(0040,4001)',
     GeneratorID: '(0018,1005)',
     GeneratorPower: '(0018,1170)',
+    GeneticModificationsCodeSequence: '(0010,0229)',
+    GeneticModificationsDescription: '(0010,0222)',
+    GeneticModificationsNomenclature: '(0010,0223)',
+    GeneticModificationsSequence: '(0010,0221)',
     GeometricalProperties: '(0028,9444)',
     GeometricMaximumDistortion: '(0028,9445)',
     GeometryOfKSpaceTraversal: '(0018,9032)',
@@ -4028,7 +4032,7 @@ export const tags: KeywordsMap = {
     ViewName: '(0008,2127)',
     ViewNumber: '(0008,2128)',
     ViewOrientationCodeSequence: '(0068,62E0)',
-    ViewOrientationModifier: '(0068,62F0)',
+    ViewOrientationModifierCodeSequence: '(0068,62F0)',
     ViewPosition: '(0018,5101)',
     VirtualSourceAxisDistances: '(300A,030A)',
     VisitComments: '(0038,4000)',
@@ -6303,6 +6307,42 @@ export const elements: ElementsMap = {
         tag: `(0010,0219)`,
         name: `Strain Code Sequence`,
         keyword: `StrainCodeSequence`,
+        vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0010,0221)': {
+        tag: `(0010,0221)`,
+        name: `Genetic Modifications Sequence`,
+        keyword: `GeneticModificationsSequence`,
+        vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0010,0222)': {
+        tag: `(0010,0222)`,
+        name: `Genetic Modifications Description`,
+        keyword: `GeneticModificationsDescription`,
+        vr: `UC`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0010,0223)': {
+        tag: `(0010,0223)`,
+        name: `Genetic Modifications Nomenclature`,
+        keyword: `GeneticModificationsNomenclature`,
+        vr: `LO`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0010,0229)': {
+        tag: `(0010,0229)`,
+        name: `Genetic Modifications Code Sequence`,
+        keyword: `GeneticModificationsCodeSequence`,
         vr: `SQ`,
         vm: `1`,
         note: ``,
@@ -28433,10 +28473,10 @@ export const elements: ElementsMap = {
     },
     '(0068,62F0)': {
         tag: `(0068,62F0)`,
-        name: `View Orientation Modifier`,
-        keyword: `ViewOrientationModifier`,
-        vr: `FD`,
-        vm: `9`,
+        name: `View Orientation Modifier Code Sequence`,
+        keyword: `ViewOrientationModifierCodeSequence`,
+        vr: `SQ`,
+        vm: `1`,
         note: ``,
         isRetired: false,
     },
@@ -32134,7 +32174,7 @@ export const elements: ElementsMap = {
         tag: `(0076,0034)`,
         name: `Component Type Code Sequence`,
         keyword: `ComponentTypeCodeSequence`,
-        vr: `CS`,
+        vr: `SQ`,
         vm: `1`,
         note: ``,
         isRetired: false,
