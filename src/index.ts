@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2017d';
+export const revision: string = '2017e';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
