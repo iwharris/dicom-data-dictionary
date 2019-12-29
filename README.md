@@ -142,3 +142,11 @@ npm dist-tag add @iwharris/dicom-data-dictionary@<VERSION_NUMBER> latest
 ```bash
 npm dist-tag ls
 ```
+
+1. Merge the branch back into master to ensure that it has the latest revision.
+
+```bash
+git checkout master
+git merge 2020a
+git push
+```
