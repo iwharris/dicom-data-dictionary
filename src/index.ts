@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2014a';
+export const revision: string = '2014b';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -566,8 +566,8 @@ export const tags: KeywordsMap = {
     ConsentForDistributionFlag: '(0012,0085)',
     ConstantVolumeFlag: '(0018,9333)',
     ConstraintWeight: '(300A,0021)',
-    ContactDisplayName: '(0074,100c)',
-    ContactURI: '(0074,100a)',
+    ContactDisplayName: '(0074,100C)',
+    ContactURI: '(0074,100A)',
     ContainerComponentDescription: '(0050,001E)',
     ContainerComponentDiameter: '(0050,001D)',
     ContainerComponentID: '(0050,001B)',
@@ -1703,7 +1703,11 @@ export const tags: KeywordsMap = {
     LocalNamespaceEntityID: '(0040,0031)',
     Location: '(0020,0050)',
     LocationOfMeasuredBeamDiameter: '(0014,4019)',
+    LongEdgePointIndexList: '(0066,0042)',
     LongitudinalTemporalInformationModified: '(0028,0303)',
+    LongPrimitivePointIndexList: '(0066,0040)',
+    LongTrianglePointIndexList: '(0066,0041)',
+    LongVertexPointIndexList: '(0066,0043)',
     LossyImageCompression: '(0028,2110)',
     LossyImageCompressionMethod: '(0028,2114)',
     LossyImageCompressionRatio: '(0028,2112)',
@@ -2434,7 +2438,7 @@ export const tags: KeywordsMap = {
     ProcedureLastModifiedDate: '(0014,407A)',
     ProcedureStepCancellationDateTime: '(0040,4052)',
     ProcedureStepCommunicationsURISequence: '(0074,1008)',
-    ProcedureStepDiscontinuationReasonCodeSequence: '(0074,100e)',
+    ProcedureStepDiscontinuationReasonCodeSequence: '(0074,100E)',
     ProcedureStepLabel: '(0074,1204)',
     ProcedureStepProgress: '(0074,1004)',
     ProcedureStepProgressDescription: '(0074,1006)',
@@ -4775,7 +4779,7 @@ export const elements: ElementsMap = {
     },
     '(0008,1163)': {
         tag: `(0008,1163)`,
-        name: `Time​ Range`,
+        name: `Time Range`,
         keyword: `TimeRange`,
         vr: `FD`,
         vm: `2`,
@@ -4804,7 +4808,7 @@ export const elements: ElementsMap = {
         tag: `(0008,1190)`,
         name: `Retrieve URL`,
         keyword: `RetrieveURL`,
-        vr: `UT`,
+        vr: `UR`,
         vm: `1`,
         note: ``,
         isRetired: false,
@@ -5216,7 +5220,7 @@ export const elements: ElementsMap = {
     },
     '(0008,225C)': {
         tag: `(0008,225C)`,
-        name: `On​Axis Background Anatomic Structure Code Sequence (Trial)`,
+        name: `On Axis Background Anatomic Structure Code Sequence (Trial)`,
         keyword: `OnAxisBackgroundAnatomicStructureCodeSequenceTrial`,
         vr: `SQ`,
         vm: `1`,
@@ -5540,7 +5544,7 @@ export const elements: ElementsMap = {
     },
     '(0010,1000)': {
         tag: `(0010,1000)`,
-        name: `Other Patient I​Ds`,
+        name: `Other Patient IDs`,
         keyword: `OtherPatientIDs`,
         vr: `LO`,
         vm: `1-n`,
@@ -5558,7 +5562,7 @@ export const elements: ElementsMap = {
     },
     '(0010,1002)': {
         tag: `(0010,1002)`,
-        name: `Other Patient I​Ds Sequence`,
+        name: `Other Patient IDs Sequence`,
         keyword: `OtherPatientIDsSequence`,
         vr: `SQ`,
         vm: `1`,
@@ -7601,7 +7605,7 @@ export const elements: ElementsMap = {
     },
     '(0018,0031)': {
         tag: `(0018,0031)`,
-        name: `Radio​pharmaceutical`,
+        name: `Radiopharmaceutical`,
         keyword: `Radiopharmaceutical`,
         vr: `LO`,
         vm: `1`,
@@ -8330,7 +8334,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1070)': {
         tag: `(0018,1070)`,
-        name: `Radio​pharmaceutical Route`,
+        name: `Radiopharmaceutical Route`,
         keyword: `RadiopharmaceuticalRoute`,
         vr: `LO`,
         vm: `1`,
@@ -8339,7 +8343,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1071)': {
         tag: `(0018,1071)`,
-        name: `Radio​pharmaceutical Volume`,
+        name: `Radiopharmaceutical Volume`,
         keyword: `RadiopharmaceuticalVolume`,
         vr: `DS`,
         vm: `1`,
@@ -8348,7 +8352,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1072)': {
         tag: `(0018,1072)`,
-        name: `Radio​pharmaceutical Start Time`,
+        name: `Radiopharmaceutical Start Time`,
         keyword: `RadiopharmaceuticalStartTime`,
         vr: `TM`,
         vm: `1`,
@@ -8357,7 +8361,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1073)': {
         tag: `(0018,1073)`,
-        name: `Radio​pharmaceutical Stop Time`,
+        name: `Radiopharmaceutical Stop Time`,
         keyword: `RadiopharmaceuticalStopTime`,
         vr: `TM`,
         vm: `1`,
@@ -8393,7 +8397,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1077)': {
         tag: `(0018,1077)`,
-        name: `Radio​pharmaceutical Specific Activity`,
+        name: `Radiopharmaceutical Specific Activity`,
         keyword: `RadiopharmaceuticalSpecificActivity`,
         vr: `DS`,
         vm: `1`,
@@ -8402,7 +8406,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1078)': {
         tag: `(0018,1078)`,
-        name: `Radio​pharmaceutical Start DateTime`,
+        name: `Radiopharmaceutical Start DateTime`,
         keyword: `RadiopharmaceuticalStartDateTime`,
         vr: `DT`,
         vm: `1`,
@@ -8411,7 +8415,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1079)': {
         tag: `(0018,1079)`,
-        name: `Radio​pharmaceutical Stop DateTime`,
+        name: `Radiopharmaceutical Stop DateTime`,
         keyword: `RadiopharmaceuticalStopDateTime`,
         vr: `DT`,
         vm: `1`,
@@ -9437,7 +9441,7 @@ export const elements: ElementsMap = {
     },
     '(0018,1624)': {
         tag: `(0018,1624)`,
-        name: `Shutter Presentation Color CIE​Lab Value`,
+        name: `Shutter Presentation Color CIELab Value`,
         keyword: `ShutterPresentationColorCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -12569,7 +12573,7 @@ export const elements: ElementsMap = {
     },
     '(0018,9345)': {
         tag: `(0018,9345)`,
-        name: `CTD​Ivol`,
+        name: `CTDIvol`,
         keyword: `CTDIvol`,
         vr: `FD`,
         vm: `1`,
@@ -13649,7 +13653,7 @@ export const elements: ElementsMap = {
     },
     '(0018,9729)': {
         tag: `(0018,9729)`,
-        name: `Radio​pharmaceutical Agent Number`,
+        name: `Radiopharmaceutical Agent Number`,
         keyword: `RadiopharmaceuticalAgentNumber`,
         vr: `US`,
         vm: `1`,
@@ -13703,7 +13707,7 @@ export const elements: ElementsMap = {
     },
     '(0018,9737)': {
         tag: `(0018,9737)`,
-        name: `Radio​pharmaceutical Usage Sequence`,
+        name: `Radiopharmaceutical Usage Sequence`,
         keyword: `RadiopharmaceuticalUsageSequence`,
         vr: `SQ`,
         vm: `1`,
@@ -14495,7 +14499,7 @@ export const elements: ElementsMap = {
     },
     '(0020,31xx)': {
         tag: `(0020,31xx)`,
-        name: `Source Image I​Ds`,
+        name: `Source Image IDs`,
         keyword: `SourceImageIDs`,
         vr: `CS`,
         vm: `1-n`,
@@ -18122,7 +18126,7 @@ export const elements: ElementsMap = {
     },
     '(0028,1104)': {
         tag: `(0028,1104)`,
-        name: `Alpha​ Palette Color ​Lookup Table Descriptor`,
+        name: `Alpha Palette Color Lookup Table Descriptor`,
         keyword: `AlphaPaletteColorLookupTableDescriptor`,
         vr: `US`,
         vm: `3`,
@@ -19114,7 +19118,7 @@ export const elements: ElementsMap = {
         tag: `(0028,7FE0)`,
         name: `Pixel Data Provider URL`,
         keyword: `PixelDataProviderURL`,
-        vr: `UT`,
+        vr: `UR`,
         vm: `1`,
         note: ``,
         isRetired: false,
@@ -20102,7 +20106,7 @@ export const elements: ElementsMap = {
     },
     '(003A,0231)': {
         tag: `(003A,0231)`,
-        name: `Waveform Display Background CIE​Lab Value`,
+        name: `Waveform Display Background CIELab Value`,
         keyword: `WaveformDisplayBackgroundCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -20138,7 +20142,7 @@ export const elements: ElementsMap = {
     },
     '(003A,0244)': {
         tag: `(003A,0244)`,
-        name: `Channel Recommended Display CIE​Lab Value`,
+        name: `Channel Recommended Display CIELab Value`,
         keyword: `ChannelRecommendedDisplayCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -21695,7 +21699,7 @@ export const elements: ElementsMap = {
     },
     '(0040,8302)': {
         tag: `(0040,8302)`,
-        name: `Entrance Dose in m​Gy`,
+        name: `Entrance Dose in mGy`,
         keyword: `EntranceDoseInmGy`,
         vr: `DS`,
         vm: `1`,
@@ -22136,7 +22140,7 @@ export const elements: ElementsMap = {
     },
     '(0040,A120)': {
         tag: `(0040,A120)`,
-        name: `Date​Time`,
+        name: `DateTime`,
         keyword: `DateTime`,
         vr: `DT`,
         vm: `1`,
@@ -22867,7 +22871,7 @@ export const elements: ElementsMap = {
         tag: `(0040,E010)`,
         name: `Retrieve URI`,
         keyword: `RetrieveURI`,
-        vr: `UT`,
+        vr: `UR`,
         vm: `1`,
         note: ``,
         isRetired: false,
@@ -23927,7 +23931,7 @@ export const elements: ElementsMap = {
     },
     '(0048,0015)': {
         tag: `(0048,0015)`,
-        name: `Recommended Absent Pixel CIE​Lab Value`,
+        name: `Recommended Absent Pixel CIELab Value`,
         keyword: `RecommendedAbsentPixelCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -24539,7 +24543,7 @@ export const elements: ElementsMap = {
     },
     '(0054,0016)': {
         tag: `(0054,0016)`,
-        name: `Radio​pharmaceutical Information Sequence`,
+        name: `Radiopharmaceutical Information Sequence`,
         keyword: `RadiopharmaceuticalInformationSequence`,
         vr: `SQ`,
         vm: `1`,
@@ -24881,7 +24885,7 @@ export const elements: ElementsMap = {
     },
     '(0054,0304)': {
         tag: `(0054,0304)`,
-        name: `Radio​pharmaceutical Code Sequence`,
+        name: `Radiopharmaceutical Code Sequence`,
         keyword: `RadiopharmaceuticalCodeSequence`,
         vr: `SQ`,
         vm: `1`,
@@ -25376,7 +25380,7 @@ export const elements: ElementsMap = {
     },
     '(0062,000D)': {
         tag: `(0062,000D)`,
-        name: `Recommended Display CIE​Lab Value`,
+        name: `Recommended Display CIELab Value`,
         keyword: `RecommendedDisplayCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -25920,6 +25924,42 @@ export const elements: ElementsMap = {
         keyword: `RecommendedLineThickness`,
         vr: `FL`,
         vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0066,0040)': {
+        tag: `(0066,0040)`,
+        name: `Long Primitive Point Index List`,
+        keyword: `LongPrimitivePointIndexList`,
+        vr: `UL`,
+        vm: `1-n`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0066,0041)': {
+        tag: `(0066,0041)`,
+        name: `Long Triangle Point Index List`,
+        keyword: `LongTrianglePointIndexList`,
+        vr: `UL`,
+        vm: `3-3n`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0066,0042)': {
+        tag: `(0066,0042)`,
+        name: `Long Edge Point Index List`,
+        keyword: `LongEdgePointIndexList`,
+        vr: `UL`,
+        vm: `2-2n`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0066,0043)': {
+        tag: `(0066,0043)`,
+        name: `Long Vertex Point Index List`,
+        keyword: `LongVertexPointIndexList`,
+        vr: `UL`,
+        vm: `1-n`,
         note: ``,
         isRetired: false,
     },
@@ -27041,7 +27081,7 @@ export const elements: ElementsMap = {
     },
     '(0070,0241)': {
         tag: `(0070,0241)`,
-        name: `Text Color CIE​Lab Value`,
+        name: `Text Color CIELab Value`,
         keyword: `TextColorCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -27095,7 +27135,7 @@ export const elements: ElementsMap = {
     },
     '(0070,0247)': {
         tag: `(0070,0247)`,
-        name: `Shadow Color CIE​Lab Value`,
+        name: `Shadow Color CIELab Value`,
         keyword: `ShadowColorCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -27131,7 +27171,7 @@ export const elements: ElementsMap = {
     },
     '(0070,0251)': {
         tag: `(0070,0251)`,
-        name: `Pattern On Color CIE​Lab Value`,
+        name: `Pattern On Color CIELab Value`,
         keyword: `PatternOnColorCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -27140,7 +27180,7 @@ export const elements: ElementsMap = {
     },
     '(0070,0252)': {
         tag: `(0070,0252)`,
-        name: `Pattern Off Color CIE​Lab Value`,
+        name: `Pattern Off Color CIELab Value`,
         keyword: `PatternOffColorCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -27464,7 +27504,7 @@ export const elements: ElementsMap = {
     },
     '(0070,0401)': {
         tag: `(0070,0401)`,
-        name: `Graphic Layer Recommended Display CIE​Lab Value`,
+        name: `Graphic Layer Recommended Display CIELab Value`,
         keyword: `GraphicLayerRecommendedDisplayCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -28220,7 +28260,7 @@ export const elements: ElementsMap = {
     },
     '(0072,0420)': {
         tag: `(0072,0420)`,
-        name: `Structured Display Background CIE​Lab Value`,
+        name: `Structured Display Background CIELab Value`,
         keyword: `StructuredDisplayBackgroundCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -28229,7 +28269,7 @@ export const elements: ElementsMap = {
     },
     '(0072,0421)': {
         tag: `(0072,0421)`,
-        name: `Empty Image Box CIE​Lab Value`,
+        name: `Empty Image Box CIELab Value`,
         keyword: `EmptyImageBoxCIELabValue`,
         vr: `US`,
         vm: `3`,
@@ -28533,17 +28573,17 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
-    '(0074,100a)': {
-        tag: `(0074,100a)`,
+    '(0074,100A)': {
+        tag: `(0074,100A)`,
         name: `Contact URI`,
         keyword: `ContactURI`,
-        vr: `ST`,
+        vr: `UR`,
         vm: `1`,
         note: ``,
         isRetired: false,
     },
-    '(0074,100c)': {
-        tag: `(0074,100c)`,
+    '(0074,100C)': {
+        tag: `(0074,100C)`,
         name: `Contact Display Name`,
         keyword: `ContactDisplayName`,
         vr: `LO`,
@@ -28551,8 +28591,8 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
-    '(0074,100e)': {
-        tag: `(0074,100e)`,
+    '(0074,100E)': {
+        tag: `(0074,100E)`,
         name: `Procedure Step Discontinuation Reason Code Sequence`,
         keyword: `ProcedureStepDiscontinuationReasonCodeSequence`,
         vr: `SQ`,
@@ -28967,7 +29007,7 @@ export const elements: ElementsMap = {
     },
     '(0074,1246)': {
         tag: `(0074,1246)`,
-        name: `Unified Procedure Step​ List Status`,
+        name: `Unified Procedure Step List Status`,
         keyword: `UnifiedProcedureStepListStatus`,
         vr: `CS`,
         vm: `1`,
@@ -29426,7 +29466,7 @@ export const elements: ElementsMap = {
     },
     '(0080,0007)': {
         tag: `(0080,0007)`,
-        name: `Surface Point Color CIE​Lab Value Data`,
+        name: `Surface Point Color CIELab Value Data`,
         keyword: `SurfacePointColorCIELabValueData`,
         vr: `US`,
         vm: `3-3n`,
