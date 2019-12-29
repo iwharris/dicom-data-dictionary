@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2017e';
+export const revision: string = '2018a';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -881,6 +881,7 @@ export const tags: KeywordsMap = {
     DefaultMagnificationType: '(2010,00A6)',
     DefaultPrinterResolutionID: '(2010,0054)',
     DefaultSmoothingType: '(2010,00A8)',
+    DefinitionSourceSequence: '(0008,1156)',
     DeformableRegistrationGridSequence: '(0064,0005)',
     DeformableRegistrationSequence: '(0064,0002)',
     DegreeOfDilation: '(0022,000E)',
@@ -2928,6 +2929,7 @@ export const tags: KeywordsMap = {
     ReferencedDoseReferenceSequence: '(300C,0050)',
     ReferencedDoseReferenceUID: '(300A,0083)',
     ReferencedDoseSequence: '(300C,0080)',
+    ReferencedFiducialUID: '(0070,031B)',
     ReferencedFilmBoxSequence: '(2000,0500)',
     ReferencedFilmSessionSequence: '(2010,0500)',
     ReferencedFindingsGroupUIDTrial: '(0040,A022)',
@@ -5486,6 +5488,15 @@ export const elements: ElementsMap = {
         name: `Referenced SOP Instance UID`,
         keyword: `ReferencedSOPInstanceUID`,
         vr: `UI`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0008,1156)': {
+        tag: `(0008,1156)`,
+        name: `Definition Source Sequence`,
+        keyword: `DefinitionSourceSequence`,
+        vr: `SQ`,
         vm: `1`,
         note: ``,
         isRetired: false,
@@ -23838,8 +23849,8 @@ export const elements: ElementsMap = {
         keyword: `PerformedProcessingApplicationsCodeSequence`,
         vr: `SQ`,
         vm: `1`,
-        note: ``,
-        isRetired: false,
+        note: `RET`,
+        isRetired: true,
     },
     '(0040,4009)': {
         tag: `(0040,4009)`,
@@ -30268,6 +30279,15 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(0070,031B)': {
+        tag: `(0070,031B)`,
+        name: `Referenced Fiducial UID`,
+        keyword: `ReferencedFiducialUID`,
+        vr: `UI`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(0070,031C)': {
         tag: `(0070,031C)`,
         name: `Fiducial Set Sequence`,
@@ -33252,7 +33272,7 @@ export const elements: ElementsMap = {
         name: `U Value Data`,
         keyword: `UValueData`,
         vr: `OF`,
-        vm: `1-n`,
+        vm: `1`,
         note: ``,
         isRetired: false,
     },
@@ -33261,7 +33281,7 @@ export const elements: ElementsMap = {
         name: `V Value Data`,
         keyword: `VValueData`,
         vr: `OF`,
-        vm: `1-n`,
+        vm: `1`,
         note: ``,
         isRetired: false,
     },
