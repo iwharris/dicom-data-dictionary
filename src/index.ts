@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2018a';
+export const revision: string = '2018b';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -2003,7 +2003,10 @@ export const tags: KeywordsMap = {
     Modality: '(0008,0060)',
     ModalityLUTSequence: '(0028,3000)',
     ModalityLUTType: '(0028,3004)',
+    ModelMirroring: '(0068,7002)',
+    ModelModification: '(0068,7001)',
     ModelSpecificationSequence: '(0018,9912)',
+    ModelUsageCodeSequence: '(0068,7003)',
     ModeOfPercutaneousAccessSequence: '(0052,0016)',
     ModifiableConstraintFlag: '(0082,0038)',
     ModifiedAttributesSequence: '(0400,0550)',
@@ -2135,6 +2138,7 @@ export const tags: KeywordsMap = {
     NumberOfLeafJawPairs: '(300A,00BC)',
     NumberOfLuminancePoints: '(0028,701B)',
     NumberOfMapPoints: '(0022,1530)',
+    NumberOfOpticalPaths: '(0048,0302)',
     NumberOfPaddedALines: '(0052,0038)',
     NumberOfPaintings: '(300A,039A)',
     NumberOfPatientRelatedInstances: '(0020,1204)',
@@ -3285,6 +3289,7 @@ export const tags: KeywordsMap = {
     ScheduledProcedureStepDescription: '(0040,0007)',
     ScheduledProcedureStepEndDate: '(0040,0004)',
     ScheduledProcedureStepEndTime: '(0040,0005)',
+    ScheduledProcedureStepExpirationDateTime: '(0040,4008)',
     ScheduledProcedureStepID: '(0040,0009)',
     ScheduledProcedureStepLocation: '(0040,0011)',
     ScheduledProcedureStepModificationDateTime: '(0040,4010)',
@@ -3927,6 +3932,7 @@ export const tags: KeywordsMap = {
     TotalNumberOfExposures: '(0040,0301)',
     TotalNumberOfPiecesOfMediaCreated: '(2200,000B)',
     TotalPixelMatrixColumns: '(0048,0006)',
+    TotalPixelMatrixFocalPlanes: '(0048,0303)',
     TotalPixelMatrixOriginSequence: '(0048,0008)',
     TotalPixelMatrixRows: '(0048,0007)',
     TotalProcessingTime: '(4010,1069)',
@@ -4221,6 +4227,7 @@ export const tags: KeywordsMap = {
     WeightingTransferFunctionSequence: '(0070,1806)',
     WhitePointFlag: '(0028,7021)',
     WholeBodyTechnique: '(0018,1301)',
+    WholeSlideMicroscopyImageFrameTypeSequence: '(0040,0710)',
     WideFieldOphthalmicPhotographyQualityRatingSequence: '(0022,1525)',
     WideFieldOphthalmicPhotographyQualityThresholdSequence: '(0022,1526)',
     WideFieldOphthalmicPhotographyThresholdQualityRating: '(0022,1527)',
@@ -23429,6 +23436,15 @@ export const elements: ElementsMap = {
         note: `RET`,
         isRetired: true,
     },
+    '(0040,0710)': {
+        tag: `(0040,0710)`,
+        name: `Whole Slide Microscopy Image Frame Type Sequence`,
+        keyword: `WholeSlideMicroscopyImageFrameTypeSequence`,
+        vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(0040,071A)': {
         tag: `(0040,071A)`,
         name: `Image Center Point Coordinates Sequence`,
@@ -23851,6 +23867,15 @@ export const elements: ElementsMap = {
         vm: `1`,
         note: `RET`,
         isRetired: true,
+    },
+    '(0040,4008)': {
+        tag: `(0040,4008)`,
+        name: `Scheduled Procedure Step Expiration DateTime`,
+        keyword: `ScheduledProcedureStepExpirationDateTime`,
+        vr: `DT`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
     },
     '(0040,4009)': {
         tag: `(0040,4009)`,
@@ -26724,6 +26749,24 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(0048,0302)': {
+        tag: `(0048,0302)`,
+        name: `Number of Optical Paths`,
+        keyword: `NumberOfOpticalPaths`,
+        vr: `UL`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0048,0303)': {
+        tag: `(0048,0303)`,
+        name: `Total Pixel Matrix Focal Planes`,
+        keyword: `TotalPixelMatrixFocalPlanes`,
+        vr: `UL`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(0050,0004)': {
         tag: `(0050,0004)`,
         name: `Calibration Image`,
@@ -29376,6 +29419,33 @@ export const elements: ElementsMap = {
         keyword: `ThreeDPlaneNormal`,
         vr: `FD`,
         vm: `3`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0068,7001)': {
+        tag: `(0068,7001)`,
+        name: `Model Modification`,
+        keyword: `ModelModification`,
+        vr: `CS`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0068,7002)': {
+        tag: `(0068,7002)`,
+        name: `Model Mirroring`,
+        keyword: `ModelMirroring`,
+        vr: `CS`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0068,7003)': {
+        tag: `(0068,7003)`,
+        name: `Model Usage Code Sequence`,
+        keyword: `ModelUsageCodeSequence`,
+        vr: `SQ`,
+        vm: `1`,
         note: ``,
         isRetired: false,
     },
