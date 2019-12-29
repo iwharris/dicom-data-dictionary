@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2016d';
+export const revision: string = '2016e';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -1907,6 +1907,7 @@ export const tags: KeywordsMap = {
     MaximumMemoryAllocation: '(2000,0061)',
     MaximumPointDistance: '(0066,0019)',
     MaximumStimulusLuminance: '(0024,0018)',
+    MaximumStoredValueMapped: '(0028,1232)',
     MeanPointDistance: '(0066,0018)',
     MeasuredAPDimension: '(0010,1023)',
     MeasuredBandwidth: '(0014,401C)',
@@ -1953,6 +1954,7 @@ export const tags: KeywordsMap = {
     MinimumCoordinateValue: '(50xx,0104)',
     MinimumKeratometricSequence: '(0046,0215)',
     MinimumSensitivityValue: '(0024,0105)',
+    MinimumStoredValueMapped: '(0028,1231)',
     ModalitiesInStudy: '(0008,0061)',
     Modality: '(0008,0060)',
     ModalityLUTSequence: '(0028,3000)',
@@ -2323,6 +2325,7 @@ export const tags: KeywordsMap = {
     ParameterPointer: '(3008,0065)',
     ParameterSequencePointer: '(3008,0061)',
     ParametersSpecificationSequence: '(0018,9913)',
+    ParameterValueNumber: '(3008,0067)',
     ParametricMapFrameTypeSequence: '(0040,9092)',
     PartialDataDisplayHandling: '(0072,0208)',
     PartialFourier: '(0018,9081)',
@@ -3198,6 +3201,7 @@ export const tags: KeywordsMap = {
     ScanSpotPrescribedIndices: '(300A,0391)',
     ScanSpotReordered: '(300A,0393)',
     ScanSpotReorderingAllowed: '(300A,0395)',
+    ScanSpotTimeOffset: '(300A,038F)',
     ScanSpotTuneID: '(300A,0390)',
     ScanType: '(4010,1048)',
     ScanVelocity: '(0018,1300)',
@@ -3268,6 +3272,7 @@ export const tags: KeywordsMap = {
     SecondaryReviewTime: '(0014,0103)',
     SegmentAlgorithmName: '(0062,0009)',
     SegmentAlgorithmType: '(0062,0008)',
+    SegmentationAlgorithmIdentificationSequence: '(0062,0007)',
     SegmentationFractionalType: '(0062,0010)',
     SegmentationType: '(0062,0001)',
     SegmentDescription: '(0062,0006)',
@@ -3579,6 +3584,7 @@ export const tags: KeywordsMap = {
     StorageProtocolElementSequence: '(0018,9936)',
     StorageProtocolElementSpecificationSequence: '(0018,9935)',
     StorageURL: '(0040,4073)',
+    StoredValueColorRangeSequence: '(0028,1230)',
     STOWRSStorageSequence: '(0040,4072)',
     StrainAdditionalInformation: '(0010,0218)',
     StrainCodeSequence: '(0010,0219)',
@@ -20243,6 +20249,33 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(0028,1230)': {
+        tag: `(0028,1230)`,
+        name: `Stored Value Color Range Sequence`,
+        keyword: `StoredValueColorRangeSequence`,
+        vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0028,1231)': {
+        tag: `(0028,1231)`,
+        name: `Minimum Stored Value Mapped`,
+        keyword: `MinimumStoredValueMapped`,
+        vr: `FD`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0028,1232)': {
+        tag: `(0028,1232)`,
+        name: `Maximum Stored Value Mapped`,
+        keyword: `MaximumStoredValueMapped`,
+        vr: `FD`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(0028,1300)': {
         tag: `(0028,1300)`,
         name: `Breast Implant Present`,
@@ -27431,6 +27464,15 @@ export const elements: ElementsMap = {
         name: `Segment Description`,
         keyword: `SegmentDescription`,
         vr: `ST`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0062,0007)': {
+        tag: `(0062,0007)`,
+        name: `Segmentation Algorithm Identification Sequence`,
+        keyword: `SegmentationAlgorithmIdentificationSequence`,
+        vr: `SQ`,
         vm: `1`,
         note: ``,
         isRetired: false,
@@ -35373,6 +35415,15 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(3008,0067)': {
+        tag: `(3008,0067)`,
+        name: `Parameter Value Number`,
+        keyword: `ParameterValueNumber`,
+        vr: `US`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(3008,0068)': {
         tag: `(3008,0068)`,
         name: `Corrected Parameter Sequence`,
@@ -38925,6 +38976,15 @@ export const elements: ElementsMap = {
         keyword: `IsocenterToRangeModulatorDistance`,
         vr: `FL`,
         vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(300A,038F)': {
+        tag: `(300A,038F)`,
+        name: `Scan Spot Time Offset`,
+        keyword: `ScanSpotTimeOffset`,
+        vr: `FL`,
+        vm: `1-n`,
         note: ``,
         isRetired: false,
     },
