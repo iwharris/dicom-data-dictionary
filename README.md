@@ -86,6 +86,59 @@ npm run compile
 
 ## Publishing a new revision
 
--   Follow the build steps from the previous section
--   Commit `src/index.ts` to source control if changed
--   TODO
+1. Check out `master` and create a new branch, naming it `revision/<REVISION_STRING>`. For example:
+
+```bash
+git checkout master
+git pull
+git checkout -b revision/2020a
+```
+
+1. Push the branch.
+
+```bash
+git push origin revision/2020a
+```
+
+1. Follow the build steps from the previous section, fetching the latest spec and generating the dictionary module.
+
+```bash
+# dicom.nema.com labels the latest spec as 'current' instead of a revision string like '2020a'.
+# The following step assumes that 'current' is pointing to the '2020a' revision.
+npm run fetch current
+npm run build downloaded/2020a/part06.xml
+```
+
+1. Commit the new `src/index.ts` module to the branch.
+
+```bash
+git add src/index.ts
+git commit -m "revision 2020a"
+```
+
+1. Increment the package version for the new revision. Each new revision should be a new minor release.
+
+```bash
+npm version minor
+```
+
+1. Add a git tag that points to the revision.
+
+```
+git tag -f 2020a
+git push --tags
+```
+
+1. Publish the package to NPM and update the `current` and `latest` tags to point to this version.
+
+```bash
+npm publish --tag 2020a --access public
+npm dist-tag add @iwharris/dicom-data-dictionary@<VERSION_NUMBER> current
+npm dist-tag add @iwharris/dicom-data-dictionary@<VERSION_NUMBER> latest
+```
+
+1. Check the dist-tags on the package to make sure that they are pointing to the correct versions.
+
+```bash
+npm dist-tag ls
+```
