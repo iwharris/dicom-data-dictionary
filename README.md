@@ -4,8 +4,16 @@ dictionary of DICOM data elements, built directly from the published standard at
 
 ## Installation
 
+To install the latest version of the dictionary (ie. latest specification from dicom.nema.org):
+
 ```bash
 npm install @iwharris/dicom-data-dictionary
+```
+
+To install a specific revision (eg. 2016c):
+
+```bash
+npm install @iwharris/dicom-data-dictionary@2016c
 ```
 
 ## Usage
