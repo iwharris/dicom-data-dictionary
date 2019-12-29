@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2018b';
+export const revision: string = '2018c';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -286,6 +286,7 @@ export const tags: KeywordsMap = {
     BeamDoseMeaning: '(300A,008B)',
     BeamDosePointDepth: '(300A,0088)',
     BeamDosePointEquivalentDepth: '(300A,0089)',
+    BeamDosePointSourceToExternalContourDistance: '(300A,0094)',
     BeamDosePointSSD: '(300A,008A)',
     BeamDoseSpecificationPoint: '(300A,0082)',
     BeamDoseType: '(300A,0090)',
@@ -1673,6 +1674,7 @@ export const tags: KeywordsMap = {
     InstanceCreationTime: '(0008,0013)',
     InstanceCreatorUID: '(0008,0014)',
     InstanceNumber: '(0020,0013)',
+    InstanceOriginStatus: '(0400,0600)',
     InstitutionAddress: '(0008,0081)',
     InstitutionalDepartmentName: '(0008,1040)',
     InstitutionCodeSequence: '(0008,0082)',
@@ -33904,6 +33906,15 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(0400,0600)': {
+        tag: `(0400,0600)`,
+        name: `Instance Origin Status`,
+        keyword: `InstanceOriginStatus`,
+        vr: `CS`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(1000,xxx0)': {
         tag: `(1000,xxx0)`,
         name: `Escape Triplet`,
@@ -37401,6 +37412,15 @@ export const elements: ElementsMap = {
         name: `Depth Value Averaging Flag`,
         keyword: `DepthValueAveragingFlag`,
         vr: `CS`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(300A,0094)': {
+        tag: `(300A,0094)`,
+        name: `Beam Dose Point Source to External Contour Distance`,
+        keyword: `BeamDosePointSourceToExternalContourDistance`,
+        vr: `DS`,
         vm: `1`,
         note: ``,
         isRetired: false,
