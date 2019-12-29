@@ -5,7 +5,7 @@
 /**
  * The revision of the data dictionary spec, eg. "2014a".
  */
-export const revision: string = '2019d';
+export const revision: string = '2019e';
 
 /**
  * Maps DICOM element keywords to their tag "(gggg,eeee)"
@@ -257,6 +257,7 @@ export const tags: KeywordsMap = {
     AutorefractionLeftEyeSequence: '(0046,0052)',
     AutorefractionRightEyeSequence: '(0046,0050)',
     AutosequenceFlag: '(0074,1025)',
+    AvailableTransferSyntaxUID: '(0008,3002)',
     AverageBeamDosePointDepth: '(300A,008D)',
     AverageBeamDosePointEquivalentDepth: '(300A,008E)',
     AverageBeamDosePointSourceToExternalContourDistance: '(300A,0131)',
@@ -1944,6 +1945,7 @@ export const tags: KeywordsMap = {
     IsocenterToBlockTrayDistance: '(300A,00F7)',
     IsocenterToCompensatorDistances: '(300A,02E6)',
     IsocenterToCompensatorTrayDistance: '(300A,02E4)',
+    IsocenterToGeneralAccessoryDistance: '(300A,0426)',
     IsocenterToLateralSpreadingDeviceDistance: '(300A,0374)',
     IsocenterToRangeModulatorDistance: '(300A,038A)',
     IsocenterToRangeShifterDistance: '(300A,0364)',
@@ -3742,6 +3744,7 @@ export const tags: KeywordsMap = {
     SegmentAlgorithmType: '(0062,0008)',
     SegmentAnnotationCategoryCodeSequence: '(3010,002B)',
     SegmentAnnotationTypeCodeSequence: '(3010,002C)',
+    SegmentAnnotationTypeModifierCodeSequence: '(3010,002F)',
     SegmentationAlgorithmIdentificationSequence: '(0062,0007)',
     SegmentationCreationTemplateLabel: '(3010,001E)',
     SegmentationFractionalType: '(0062,0010)',
@@ -4453,6 +4456,7 @@ export const tags: KeywordsMap = {
     TreatmentSessionIonBeamSequence: '(3008,0021)',
     TreatmentSite: '(3010,0077)',
     TreatmentSiteCodeSequence: '(3010,0078)',
+    TreatmentSiteModifierCodeSequence: '(3010,0089)',
     TreatmentSites: '(300A,000B)',
     TreatmentStatusComment: '(3008,0202)',
     TreatmentSummaryCalculatedDoseReferenceSequence: '(3008,0050)',
@@ -6490,6 +6494,15 @@ export const elements: ElementsMap = {
         keyword: `AlternateRepresentationSequence`,
         vr: `SQ`,
         vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(0008,3002)': {
+        tag: `(0008,3002)`,
+        name: `Available Transfer Syntax UID`,
+        keyword: `AvailableTransferSyntaxUID`,
+        vr: `UI`,
+        vm: `1-n`,
         note: ``,
         isRetired: false,
     },
@@ -42386,6 +42399,15 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(300A,0426)': {
+        tag: `(300A,0426)`,
+        name: `Isocenter to General Accessory Distance`,
+        keyword: `IsocenterToGeneralAccessoryDistance`,
+        vr: `DS`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(300A,0431)': {
         tag: `(300A,0431)`,
         name: `Applicator Geometry Sequence`,
@@ -44618,6 +44640,15 @@ export const elements: ElementsMap = {
         note: ``,
         isRetired: false,
     },
+    '(3010,002F)': {
+        tag: `(3010,002F)`,
+        name: `Segment Annotation Type Modifier Code Sequence`,
+        keyword: `SegmentAnnotationTypeModifierCodeSequence`,
+        vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
     '(3010,0030)': {
         tag: `(3010,0030)`,
         name: `Patient Equipment Relationship Code Sequence`,
@@ -45405,6 +45436,15 @@ export const elements: ElementsMap = {
         tag: `(3010,0088)`,
         name: `Delivery Time Structure Code Sequence`,
         keyword: `DeliveryTimeStructureCodeSequence`,
+        vr: `SQ`,
+        vm: `1`,
+        note: ``,
+        isRetired: false,
+    },
+    '(3010,0089)': {
+        tag: `(3010,0089)`,
+        name: `Treatment Site Modifier Code Sequence`,
+        keyword: `TreatmentSiteModifierCodeSequence`,
         vr: `SQ`,
         vm: `1`,
         note: ``,
