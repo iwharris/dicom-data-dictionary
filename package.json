@@ -1,6 +1,6 @@
 {
     "name": "@iwharris/dicom-data-dictionary",
-    "version": "1.26.0",
+    "version": "1.27.0",
     "description": "Dictionary of DICOM data elements, built directly from the published standard at dicom.nema.org",
     "main": "dist/index.js",
     "scripts": {
